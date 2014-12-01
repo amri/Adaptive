@@ -10,6 +10,7 @@ namespace SimpleDependency
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }
