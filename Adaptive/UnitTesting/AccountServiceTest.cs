@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 namespace UnitTesting
@@ -20,6 +21,13 @@ namespace UnitTesting
             sut.AddTransactionToAccount("Trading Account", 200m);
 
             Assert.AreEqual(200m,account.Balance);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CannotCreateAccountServiceWithNullAccountRepository()
+        {
+            var accountService = new AccountService(null);
         }
     }
 }
