@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleDependency
 {
-    class Program
+    class Target
     {
-        static void Main(string[] args)
+        public string MethodB()
         {
-              IAdapter adapter = new Adapter(new Target());
-                Console.WriteLine(adapter.MethodA());
+            return "target";
         }
     }
 }
