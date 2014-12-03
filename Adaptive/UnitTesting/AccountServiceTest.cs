@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace UnitTesting
 {
@@ -9,8 +10,12 @@ namespace UnitTesting
         public void AddingTransactionToAccountDelegatesToAccountInstance()
         {
             var account = new Account();
-            IAccountRepository repository = new FakeAccountRepository(account);
-            var sut = new AccountService(repository);
+
+            var mockRepository = new Mock<IAccountRepository>();
+
+            mockRepository.Setup(r => r.GetByName("Trading Account")).Returns(account);
+
+            var sut = new AccountService(mockRepository.Object);
 
             sut.AddTransactionToAccount("Trading Account", 200m);
 
